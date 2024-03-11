@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
+{% block space_invaders_css %}
+<link rel="stylesheet" href="{% static 'css/space_invaders.css' %}">
 {% endblock %}
+
 {% block space_invaders_js %}
+<script src="{% static 'js/space_invaders.js' %}"></script>
 {% endblock %}
 
 {% block content %}
