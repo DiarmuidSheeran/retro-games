@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block space_invaders_css %}
+    <link rel="stylesheet" href="{% static 'css/space_invaders.css' %}">
+{% endblock %}
+
+{% block space_invaders_js %}
+<script src="{% static 'js/space_invaders.js' %}"></script>
+{% endblock %}
+
+{% block title %}Space Invaders{% endblock %}
+
+{% block content %}
+<div class="container-fluid mb-4 text-center ">
+    <div class="row">
+        <div class="col-12">
+            <h1>Space Invaders</h1>
+            <a href="{% url 'index' %}"><h2>Home</h2></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <h2 class="results">0</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="grid"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+

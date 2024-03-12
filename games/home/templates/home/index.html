@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %} Home {% endblock %}
 {% block content %}
+<div class="container-fluid mb-4 text-center">
     <h1>Home</h1>
     <a href="{% url 'space_invaders' %}"><h2>Space Invaders</h2></a>
+</div>
 {% endblock %}

@@ -11,27 +11,28 @@
     
     {% block space_invaders_css %}
     {% endblock %}
-    {% block space_invaders_js %}
-    {% endblock %}
     
+
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="{% static 'js/script.js' %}"></script>
 
-    <title>Document</title>
+    <title>Retro-Games: {% block title %} {% endblock %}</title>
 </head>
 <body class="bg-dark text-white">
 
     {% include 'includes/nav/nav.html' %}
 
-    <div class="container-fluid mb-4 text-center">
+    
 
         {% block content %}
             
         {% endblock %}
 
-    </div>
+
 
     {% include 'includes/footer/footer.html' %}
     
+    {% block space_invaders_js %}
+    {% endblock %}
 </body>
 </html>
