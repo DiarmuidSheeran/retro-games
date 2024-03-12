@@ -85,8 +85,13 @@ function moveInvaders() {
         alienInvaders[i] += direction
     }
     draw()
+
+    if (squares[currentShooterIndex].classList.contains("invader")){
+        resultDisplay.innerHTML = 'GAME OVER!'
+        clearInterval(invadersId)
+    }
 }
-invadersId = setInterval(moveInvaders, 600)
+invadersId = setInterval(moveInvaders, 200)
 
 
 
