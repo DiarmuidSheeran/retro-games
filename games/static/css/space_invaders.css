@@ -1,5 +1,9 @@
 body {
-
+    background-image:url("/static/images/space-invaders/space-invaders-background.png"); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 93vh;
 }
 
 body, h1 {
@@ -7,8 +11,8 @@ body, h1 {
 }
 
 .grid {
-    width: 300px;
-    height: 300px;
+    width: 600px;
+    height: 600px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
@@ -17,29 +21,55 @@ body, h1 {
 
 .grid div {
     justify-content: center;
-    width: 19px;
-    height: 19px;
+    width: 40px;
+    height: 40px;
 }
 
-.invader {
-    background-color: purple;
-    border-radius: 10px;
-}
-
-
+/* Shooter */
 .shooter {
-    background-color: green;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    background-image: url("/static/images/space-invaders/shooter.png");
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    width: 100%; 
+    height: 100%;
 }
 
+/* Laser */
 .laser {
-    background-color: orange;
+    background-image: url("/static/images/space-invaders/laser.png");
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    width: 100%; 
+    height: 100%; 
 }
 
+/* Invader */
+.invader {
+    background-image: url("/static/images/space-invaders/alien.png");
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    width: 100%; 
+    height: 100%; 
+}
+
+/* Boom */
 .boom {
-    background-color: red;
+    background-image: url("/static/images/space-invaders/boom.png");
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    width: 100%; 
+    height: 100%;
+    animation: explode 0.3s ease-in-out; 
 }
 
+@keyframes explode {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
