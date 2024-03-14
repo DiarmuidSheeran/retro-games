@@ -15,23 +15,27 @@
 {% block content %}
 <div class="container-fluid mb-4 text-center background">
             
-    <div class="row">
+    <div class="row mb-2">
         <div class="col-12">
-            <h1>Space Invaders</h1>
-            <a href="{% url 'index' %}"><h2>Home</h2></a>
+            <img src="{% static 'images/space-invaders/space-invaders-logo.png' %}" alt="Space Invaders Logo" class="img-fluid">
         </div>
     </div>
     <div class="row">
         <div class="col-12 d-flex align-items-center justify-content-center">
-            <h2 class="results">0</h2>
+            <h2 class="results">Score: 0</h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-4">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <button class="btn btn-lg btn-primary" id="startBtn">Start Game</button>
+            <button class="btn btn-lg btn-danger" id="resetBtn">Reset Game</button>
+        </div>
+    </div>
+    <div class="row mt-4">
         <div class="col-12 d-flex align-items-center justify-content-center">
             <div class="grid"></div>
         </div>
     </div>
-   
 
 </div>
 

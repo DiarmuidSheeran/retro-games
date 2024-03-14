@@ -3,7 +3,7 @@ body {
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
-    height: 93vh;
+    height: 100vh;
 }
 
 body, h1 {
@@ -71,5 +71,17 @@ body, h1 {
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .grid {
+        width: 450px;
+        height: 450px;
+    }
+    .grid div {
+        justify-content: center;
+        width: 30px;
+        height: 30px;
     }
 }
