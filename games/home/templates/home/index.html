@@ -5,6 +5,8 @@
 {% block content %}
 <div class="container-fluid mb-4 text-center">
     <h1>Home</h1>
-    <a href="{% url 'space_invaders' %}"><h2>Space Invaders</h2></a>
+    <div class="card mt-4">
+        <a href="{% url 'space_invaders' %}"><h2 class="text-black mb-4">Space Invaders</h2><img src="{% static 'images/space-invaders/space-invaders-logo.png' %}" alt="Space Invaders Logo" class="img-fluid"></a>
+    </div>
 </div>
 {% endblock %}
