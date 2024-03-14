@@ -1,5 +1,6 @@
 const grid = document.querySelector('.grid')
 const resultDisplay = document.querySelector('.results')
+const scoreText = document.querySelector('.score')
 const width = 15
 const aliensRemoved = []
 let currentShooterIndex = 202
@@ -98,11 +99,13 @@ function startGame(event) {
             draw()
 
             if (squares[currentShooterIndex].classList.contains("invader")){
-                resultDisplay.innerHTML = 'GAME OVER!'
+                scoreText.innerHTML = 'GAME OVER!'
+                resultDisplay.innerHTML = 'TRY AGAIN!'
                 clearInterval(invadersId)
             }
             if(aliensRemoved.length === alienInvaders.length){
-                resultDisplay.innerHTML = 'YOU WIN!'
+                scoreText.innerHTML = 'YOU WIN! <br>'
+                resultDisplay.innerHTML = 'YOUR SCORE WAS: ' + results
                 clearInterval(invadersId)
             }
         }
