@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{% static 'css/space_invaders.css' %}">
 {% endblock %}
 
+
 {% block space_invaders_js %}
 <script src="{% static 'js/space_invaders.js' %}"></script>
 {% endblock %}
@@ -12,7 +13,13 @@
 {% block title %}Space Invaders{% endblock %}
 
 {% block content %}
-<div class="container-fluid mb-4 text-center ">
+<div class="container-fluid mb-4 text-center background" 
+    style="background-image: url('{% static "/images/space-invaders/space-invaders-background.png" %}'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 93vh;">
+            
     <div class="row">
         <div class="col-12">
             <h1>Space Invaders</h1>
@@ -29,6 +36,8 @@
             <div class="grid"></div>
         </div>
     </div>
+   
+
 </div>
 
 {% endblock %}
