@@ -17,6 +17,9 @@ startBtn.addEventListener('click', startGame);
 let gameStarted = false;
 
 const resetBtn = document.getElementById('resetBtn');
+resetBtn.addEventListener('click', function() {
+    location.reload();
+});
 
 const resultsBtn = document.getElementById('resultsBtn');
 resultsBtn.style.display = 'none'; // Hide initially
@@ -113,14 +116,21 @@ function startGame(event) {
                 resultDisplay.innerHTML = 'YOUR SCORE WAS: ' + results;
                 clearInterval(invadersId);
                 resultForm.style.display = 'block';
+                resetBtn.style.display = 'block';
                 document.getElementById('scoreInput').value = results;
+                document.removeEventListener('keydown', moveShooter);
+                document.removeEventListener('keydown', shoot);
+                document.removeEventListener('click', shoot);
             }
             const winning_condition = aliensRemoved.length >= alienInvaders.length;
             if (winning_condition) {
+                document.removeEventListener('keydown', moveShooter);
+                document.removeEventListener('keydown', shoot);
+                document.removeEventListener('click', shoot);
                 endGame();
             }
         }
-        invadersId = setInterval(moveInvaders, 200);
+        invadersId = setInterval(moveInvaders, 100);
 
         function shoot(e) {
             let laserId;
@@ -174,12 +184,10 @@ function endGame() {
     resultDisplay.innerHTML = 'YOUR SCORE WAS: ' + results;
     game_won = true;
 
-    // Show "Enter Results" button
+    resetBtn.style.display = 'block';
     resultForm.style.display = 'block';
     document.getElementById('scoreInput').value = results;
 }
 
-resetBtn.addEventListener('click', function() {
-    location.reload();
-});
+
 
