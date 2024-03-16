@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Ojuju:wght@200..800&display=swap');
+
 body {
     background-image:url("/static/images/space-invaders/space-invaders-background.png"); 
     background-size: cover; 
     background-position: center; 
-    background-repeat: no-repeat;
-    height: 100vh;
+    background-repeat: repeat;
 }
 
 body, h1 {
@@ -73,6 +74,21 @@ body, h1 {
         transform: scale(1);
     }
 }
+
+.leaderboard {
+    padding-right: 10px; 
+    padding-left: 10px; 
+    list-style-type: none;
+    padding-top: 10px;
+    font-family: "Ojuju", sans-serif;
+}
+
+.card {
+    box-shadow: 0px 50px 50px rgba(200, 27, 27, 0.7);
+    border: red 5px solid;
+}
+
+
 
 @media screen and (max-width: 768px) {
     .grid {

@@ -41,12 +41,19 @@
         </div>
     </div>
     <div class="row mt-4">
-        <h2 class="leaderboard">Leaderboard</h2>
-        <ul class="leaderboard">
-            {% for game_score in game_scores %}
-                <li>{{ game_score.user_name }} - {{ game_score.score }}</li>
-            {% endfor %}
-        </ul>
+        <div class="col col-md-2"></div>
+        <div class="col col-md-8" style="padding-right: 10px; padding-left: 10px;">
+            <div class="card bg-black text-white text-center">
+                <img src="{% static 'images/space-invaders/space-invaders-logo.png' %}" alt="Space Invaders Logo" class="img-fluid leaderboard">
+                <h2 class="leaderboard text-white text-decoration-underline"><strong>Leaderboards</strong></h2>
+                <ul class="leaderboard">
+                    {% for game_score in game_scores %}
+                        <li><h5><strong>{{ game_score.user_name }} - {{ game_score.score }}</strong></h5></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col col-md-2"></div>
     </div>
     <div class="row mt-4">
         <div class="col-12 d-flex align-items-center justify-content-center">
