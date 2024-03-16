@@ -20,29 +20,33 @@
             <img src="{% static 'images/space-invaders/space-invaders-logo.png' %}" alt="Space Invaders Logo" class="img-fluid">
         </div>
     </div>
-    <div class="row">
-      
+    <div class="row mt-4">
         <div class="col col-md-12" style="padding-right: 10px; padding-left: 10px;">
-            <div class="card bg-black text-white text-center">
+            <div class="card bg-black text-white text-center scorecard" style="display: none;">
                 <h2 class="score scoreboard" style="margin-right: 5px; display: none;">Score</h2> 
                 <h2 class="results scoreboard" style="margin-right: 5px; display: none;"> 0</h2>
             </div>
         </div>
     </div>
-         
-            <form class="form mt-6" method="post" style="display: none;">
-                {% csrf_token %}
-                <input type="text" name="user_name" placeholder="Enter your name">
-                <input type="hidden" name="score" id="scoreInput">
-                <button type="submit">Submit</button>
-            </form>
-            
+    <div class="row mt-4">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <button class="btn btn-lg btn-primary w-100 border border-danger" id="startBtn" style="margin-right: 10px;">Start Game </button>
+            <button class="btn btn-lg btn-danger" id="resetBtn" style="margin-top: 80px; margin-right: 10px; display: none;">Reset Game</button>
         </div>
     </div>
     <div class="row mt-4">
-        <div class="col-12 d-flex align-items-center justify-content-center">
-            <button class="btn btn-lg btn-primary" id="startBtn" style="margin-right: 10px;">Start Game </button>
-            <button class="btn btn-lg btn-danger" id="resetBtn" style="margin-right: 10px; display: none;">Reset Game</button>
+        <div class="col col-md-12" style="padding-right: 10px; padding-left: 10px;">
+            <h2 class="recordResult" style="display: none;">RECORD YOUR SCORE BELOW!</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-12" style="padding-right: 10px; padding-left: 10px;">
+            <form class="form mt-6" method="post" style="display: none;">
+                {% csrf_token %}
+                <input type="text" name="user_name" placeholder="Enter your name" class="mt-2 styled-input">
+                <input type="hidden" name="score" id="scoreInput">
+                <button type="submit" class="btn btn-warning btn-block mt-1" style="width: 100%;">Submit</button>
+            </form>
         </div>
     </div>
     <div class="row mt-4">

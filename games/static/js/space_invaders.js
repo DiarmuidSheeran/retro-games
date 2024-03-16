@@ -2,7 +2,9 @@ const grid = document.querySelector('.grid');
 const resultDisplay = document.querySelector('.results');
 const scoreText = document.querySelector('.score');
 const resultForm = document.querySelector('.form');
+const recordResult = document.querySelector('.recordResult');
 const leaderboard = document.querySelector('.leaderboard');
+const scorecard = document.querySelector('.scorecard');
 const width = 15;
 const aliensRemoved = [];
 let currentShooterIndex = 202;
@@ -31,6 +33,7 @@ function startGame(event) {
         scoreText.style.display = 'block';
         resultDisplay.style.display = 'block';
         startBtn.style.display = 'none';
+        scorecard.style.display = 'block';
         document.querySelectorAll('.leaderboard').forEach(element => {
             element.style.display = 'none';
         });
@@ -117,10 +120,15 @@ function startGame(event) {
                 clearInterval(invadersId);
                 resultForm.style.display = 'block';
                 resetBtn.style.display = 'block';
+                recordResult.style.display = 'block';
                 document.getElementById('scoreInput').value = results;
                 document.removeEventListener('keydown', moveShooter);
                 document.removeEventListener('keydown', shoot);
                 document.removeEventListener('click', shoot);
+
+                const squares = document.querySelectorAll('.grid div');
+                squares.forEach(square => square.classList.remove('invader'));
+                squares[currentShooterIndex].classList.remove('shooter');
             }
             const winning_condition = aliensRemoved.length >= alienInvaders.length;
             if (winning_condition) {
@@ -130,7 +138,7 @@ function startGame(event) {
                 endGame();
             }
         }
-        invadersId = setInterval(moveInvaders, 100);
+        invadersId = setInterval(moveInvaders, 50);
 
         function shoot(e) {
             let laserId;
@@ -184,9 +192,14 @@ function endGame() {
     resultDisplay.innerHTML = 'YOUR SCORE WAS: ' + results;
     game_won = true;
 
+    recordResult.style.display = 'block';
     resetBtn.style.display = 'block';
     resultForm.style.display = 'block';
     document.getElementById('scoreInput').value = results;
+
+    squares[currentShooterIndex].classList.remove('shooter');
+    const squares = document.querySelectorAll('.grid div');
+    squares.forEach(square => square.classList.remove('invader'));
 }
 
 
