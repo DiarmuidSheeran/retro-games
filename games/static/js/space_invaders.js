@@ -121,13 +121,10 @@ function startGame(event) {
             const shooterRow = Math.floor(currentShooterIndex / width);
             const invadersRows = alienInvaders.map(index => Math.floor(index / width));
             if (invadersRows.includes(shooterRow)){
-                scoreText.innerHTML = 'GAME OVER! YOU LOST!';
-                resultDisplay.innerHTML = 'YOUR SCORE WAS: ' + results;
+                scoreText.innerHTML = 'GAME OVER!';
+                resultDisplay.innerHTML = 'SCORE: ' + results;
                 clearInterval(invadersId);
-                resultForm.style.display = 'block';
-                resetBtn.style.display = 'block';
-                recordResult.style.display = 'block';
-                document.getElementById('scoreInput').value = results;
+            
                 document.removeEventListener('keydown', moveShooter);
                 document.removeEventListener('keydown', shoot);
                 document.removeEventListener('click', shoot);
@@ -135,6 +132,16 @@ function startGame(event) {
                 const squares = document.querySelectorAll('.grid div');
                 squares.forEach(square => square.classList.remove('invader'));
                 squares[currentShooterIndex].classList.remove('shooter');
+
+               
+                setTimeout(() => {
+                    recordResult.style.display = 'block';
+                    resetBtn.style.display = 'block';
+                    resultForm.style.display = 'block';
+                    document.getElementById('scoreInput').value = results;
+                }, 1000);
+            
+             
             }
              
             const winning_condition = aliensRemoved.length >= alienInvaders.length;
@@ -145,7 +152,7 @@ function startGame(event) {
                 endGame();
             }
         }
-        invadersId = setInterval(moveInvaders, 20);
+        invadersId = setInterval(moveInvaders, 50);
 
         function shoot(e) {
             let laserId;
@@ -196,17 +203,20 @@ function endGame() {
     scoreText.style.display = 'block';
     resultDisplay.style.display = 'block';
     scoreText.innerHTML = game_won ? 'YOU WIN! <br>' : 'GAME OVER! <br>';
-    resultDisplay.innerHTML = 'YOUR SCORE WAS: ' + results;
+    resultDisplay.innerHTML = 'SCORE: ' + results;
     game_won = true;
-
-    recordResult.style.display = 'block';
-    resetBtn.style.display = 'block';
-    resultForm.style.display = 'block';
-    document.getElementById('scoreInput').value = results;
+    setTimeout(() => {
+        recordResult.style.display = 'block';
+        resetBtn.style.display = 'block';
+        resultForm.style.display = 'block';
+        document.getElementById('scoreInput').value = results;
+    }, 1000);
 
     squares[currentShooterIndex].classList.remove('shooter');
     const squares = document.querySelectorAll('.grid div');
     squares.forEach(square => square.classList.remove('invader'));
+
+    
 }
 
 

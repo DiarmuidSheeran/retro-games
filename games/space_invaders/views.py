@@ -5,20 +5,22 @@ from .models import GameScore
 # Create your views here.
 
 def space_invaders(request):
-    game_scores = GameScore.objects.all()[:10]
+    game_scores = GameScore.objects.all()[:5]
+    all_game_scores = GameScore.objects.all()
     game_won = False
 
     if request.method == 'POST':
         form = GameScoreForm(request.POST)
         if form.is_valid():
-            form.save()  # Save the form data to create a new GameScore object
-            return redirect('space_invaders')  # Redirect to prevent form resubmission
+            form.save() 
+            return redirect('space_invaders')
     else:
         form = GameScoreForm()
     
     context = {
         'form': form,
         'game_scores': game_scores,
+        'all_game_scores': all_game_scores,
         'game_won': game_won,
     }
 
