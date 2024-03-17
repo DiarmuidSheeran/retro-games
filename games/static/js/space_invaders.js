@@ -5,6 +5,7 @@ const resultForm = document.querySelector('.form');
 const recordResult = document.querySelector('.recordResult');
 const leaderboard = document.querySelector('.leaderboard');
 const scorecard = document.querySelector('.scorecard');
+const mainBanner = document.querySelector('.main-banner-game');
 const width = 15;
 const aliensRemoved = [];
 let currentShooterIndex = 202;
@@ -13,6 +14,8 @@ let isGoingRight = true;
 let direction = 1;
 let results = 0;
 var game_won = false;
+
+mainBanner.style.display = 'none';
 
 const startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', startGame);
@@ -34,6 +37,7 @@ function startGame(event) {
         resultDisplay.style.display = 'block';
         startBtn.style.display = 'none';
         scorecard.style.display = 'block';
+        mainBanner.style.display = 'block';
         document.querySelectorAll('.leaderboard').forEach(element => {
             element.style.display = 'none';
         });
