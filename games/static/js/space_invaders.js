@@ -117,8 +117,10 @@ function startGame(event) {
                 alienInvaders[i] += direction;
             }
             draw();
-            
-            if (squares[currentShooterIndex].classList.contains("invader")) {
+
+            const shooterRow = Math.floor(currentShooterIndex / width);
+            const invadersRows = alienInvaders.map(index => Math.floor(index / width));
+            if (invadersRows.includes(shooterRow)){
                 scoreText.innerHTML = 'GAME OVER! YOU LOST!';
                 resultDisplay.innerHTML = 'YOUR SCORE WAS: ' + results;
                 clearInterval(invadersId);
@@ -134,6 +136,7 @@ function startGame(event) {
                 squares.forEach(square => square.classList.remove('invader'));
                 squares[currentShooterIndex].classList.remove('shooter');
             }
+             
             const winning_condition = aliensRemoved.length >= alienInvaders.length;
             if (winning_condition) {
                 document.removeEventListener('keydown', moveShooter);
@@ -142,7 +145,7 @@ function startGame(event) {
                 endGame();
             }
         }
-        invadersId = setInterval(moveInvaders, 50);
+        invadersId = setInterval(moveInvaders, 20);
 
         function shoot(e) {
             let laserId;

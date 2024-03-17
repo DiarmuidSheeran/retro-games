@@ -13,10 +13,10 @@
 {% block title %}Space Invaders{% endblock %}
 
 {% block content %}
-<div class="container-fluid mb-4 text-center background">
+<div class="container-fluid mb-4 text-center background w-100" style="margin: 0;">
     <div class="row">
         <div class="col-lg-4"></div>
-        <div class="col-lg-4">        
+        <div class="col-lg-4 col-md-12 col-sm-12">        
             <div class="row mb-2">
                 <div class="col-12 d-flex justify-content-center">
                     <img src="{% static 'images/space-invaders/space-invaders-logo.png' %}" alt="Space Invaders Logo" class="img-fluid main-banner-game">
@@ -46,20 +46,20 @@
                         {% csrf_token %}
                         <input type="text" name="user_name" placeholder="Enter your name" class="mt-2 styled-input">
                         <input type="hidden" name="score" id="scoreInput">
-                        <button type="submit" class="btn btn-warning btn-block mt-1" style="width: 100%;">Submit</button>
+                        <button type="submit" class="btn btn-secondary btn-block mt-1" style="width: 50%;">Submit</button>
                     </form>
                 </div>
             </div>
             <div class="row">
                 <div class="col col-lg-3"></div>
                 <div class="col col-sm-12 col-md-12 col-lg-6" style="padding-right: 10px; padding-left: 10px;">
-                    <div class="card bg-black text-white text-center leaderboard justify-content-center align-items-center">
+                    <div class="card bg-black text-white text-center leaderboard w-100 justify-content-center align-items-center" style="margin: 0;">
                         <img src="{% static 'images/space-invaders/space-invaders-logo.png' %}" alt="Space Invaders Logo" class="img-fluid leaderboard">
-                        <button class="btn btn-lg btn-primary border w-50 border-light mt-4" id="startBtn">Start Game </button>
+                        <button class="btn btn-lg btn-primary border border-light mt-4" id="startBtn">Start Game </button>
                         <h2 class="leaderboard text-white text-decoration-underline"><strong>Leaderboards</strong></h2>
                         <ul class="leaderboard">
                             {% for game_score in game_scores %}
-                                <li><h5><strong>{{ game_score.user_name }} - {{ game_score.score }}</strong></h5></li>
+                                <li><h5><strong>{{ game_score.user_name }} - {{ game_score.score }}</strong></h5><p><small class="small-text">{{ game_score.created_at }}</small></p></li>
                             {% endfor %}
                         </ul>
                     </div>
