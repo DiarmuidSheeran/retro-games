@@ -19,15 +19,15 @@
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col col-md-12" style="padding-right: 10px; padding-left: 10px;">
-                    <div class="card bg-dark text-white text-center scorecard mt-4" style="display: none;">
+                <div class="col col-md-12">
+                    <div class="card bg-black text-white text-center scorecard mt-4" style="display: none;">
                         <h2 class="score scoreboard mt-2" style="display: none;">Score</h2> 
-                        <h2 class="results scoreboard pb-2" style="display: none;"> 0</h2>
+                        <h2 class="results scoreboard" style="display: none;"> 0</h2>
                        
                         <div class="col col-md-12 mt-4">
                             <h2 class="recordResult" style="display: none;">RECORD YOUR SCORE BELOW! <br> <i class="fa-solid fa-arrow-down" style="color: #ffffff;"></i></h2>
                         </div>
-                        <div class="col col-md-12" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="col col-md-12">
                             <form class="form mt-6" method="post" style="display: none;">
                                 {% csrf_token %}
                                 <div class="form-group d-flex justify-content-center"> 
@@ -49,28 +49,26 @@
                 </div>
             </div>
             <div class="row">
-              
-                    <div class="card bg-dark text-white text-center leaderboard" style="margin: 0;">
-                        <img src="{% static 'images/space-invaders/space-invaders-logo.png' %}" alt="Space Invaders Logo" class="img-fluid leaderboard">
-                        <button class="btn btn-lg btn-primary border border-light mt-4" id="startBtn">Start Game </button>
-                        <h2 class="leaderboard text-white text-decoration-underline"><strong>Leaderboards</strong></h2>
-                        <ul class="leaderboard">
-                            {% for game_score in game_scores %}
-                                <li><h5><strong>{{ game_score.user_name }} - {{ game_score.score }}</strong></h5><p><small class="small-text">{{ game_score.created_at }}</small></p></li>
+                <div class="card text-white text-center leaderboard" style="margin: 0;">
+                    <img src="{% static 'images/space-invaders/space-invaders-logo.png' %}" alt="Space Invaders Logo" class="img-fluid leaderboard">
+                    <button class="btn btn-lg btn-light border border-danger mt-4 text-dark" id="startBtn"><strong>Start Game</strong> </button>
+                    <h2 class="leaderboard text-white text-decoration-underline"><strong>Leaderboards</strong></h2>
+                    <ul class="leaderboard">
+                        {% for game_score in game_scores %}
+                            <li><h5><strong>{{ game_score.user_name }} - {{ game_score.score }}</strong></h5><p><small class="small-text">{{ game_score.created_at }}</small></p></li>
+                        {% endfor %}
+                    </ul>
+                    <div class="dropdown">
+                        <button class="btn btn-lg btn-info dropdown-toggle mb-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <strong>View All</strong>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% for game_score in all_game_scores %}
+                                <a class="dropdown-item" href="#">{{ game_score.user_name }} - {{ game_score.score }}</a>
                             {% endfor %}
-                        </ul>
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                View More
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                {% for game_score in all_game_scores %}
-                                    <a class="dropdown-item" href="#">{{ game_score.user_name }} - {{ game_score.score }}</a>
-                                {% endfor %}
-                            </div>
                         </div>
                     </div>
-               
+                </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12 d-flex align-items-center justify-content-center">
