@@ -13,7 +13,9 @@ let invadersId;
 let isGoingRight = true;
 let direction = 1;
 let results = 0;
+let result = 0;
 var game_won = false;
+const levelSelect = document.getElementById('level');
 
 mainBanner.style.display = 'none';
 
@@ -31,6 +33,28 @@ resultsBtn.style.display = 'none'; // Hide initially
 
 
 function startGame(event) {
+    const selectedLevel = levelSelect.value;
+    let speed;
+    switch (selectedLevel) {
+        case '1':
+            speed = 600; // Adjust speed for Level 1
+            break;
+        case '2':
+            speed = 500; // Adjust speed for Level 2
+            break;
+        case '3':
+            speed = 400; // Adjust speed for Level 3
+            break;
+        case '4':
+            speed = 300; // Adjust speed for Level 3
+            break;
+        case '5':
+            speed = 200; // Adjust speed for Level 3
+            break;
+        case '6':
+            speed = 100; // Adjust speed for Level 3
+            break;
+    }
     if (!gameStarted) {
         gameStarted = true;
         scoreText.style.display = 'block';
@@ -122,7 +146,7 @@ function startGame(event) {
             const invadersRows = alienInvaders.map(index => Math.floor(index / width));
             if (invadersRows.includes(shooterRow)){
                 scoreText.innerHTML = 'GAME OVER!';
-                resultDisplay.innerHTML = 'SCORE: ' + results;
+                resultDisplay.innerHTML = 'SCORE: ' + result;
                 clearInterval(invadersId);
             
                 document.removeEventListener('keydown', moveShooter);
@@ -138,7 +162,7 @@ function startGame(event) {
                     recordResult.style.display = 'block';
                     resetBtn.style.display = 'block';
                     resultForm.style.display = 'block';
-                    document.getElementById('scoreInput').value = results;
+                    document.getElementById('scoreInput').value = result;
                 }, 1000);
             
              
@@ -152,7 +176,7 @@ function startGame(event) {
                 endGame();
             }
         }
-        invadersId = setInterval(moveInvaders, 50);
+        invadersId = setInterval(moveInvaders, speed);
 
         function shoot(e) {
             let laserId;
@@ -173,8 +197,9 @@ function startGame(event) {
 
                     const alienRemoved = alienInvaders.indexOf(currentLaserIndex);
                     aliensRemoved.push(alienRemoved);
-                    results++;
-                    resultDisplay.innerHTML = results;
+                    results += 1;
+                    result = results * selectedLevel;
+                    resultDisplay.innerHTML = result;
                 }
             }
 
@@ -203,13 +228,13 @@ function endGame() {
     scoreText.style.display = 'block';
     resultDisplay.style.display = 'block';
     scoreText.innerHTML = game_won ? 'YOU WIN! <br>' : 'GAME OVER! <br>';
-    resultDisplay.innerHTML = 'SCORE: ' + results;
+    resultDisplay.innerHTML = 'SCORE: ' + result;
     game_won = true;
     setTimeout(() => {
         recordResult.style.display = 'block';
         resetBtn.style.display = 'block';
         resultForm.style.display = 'block';
-        document.getElementById('scoreInput').value = results;
+        document.getElementById('scoreInput').value = result;
     }, 1000);
 
     squares[currentShooterIndex].classList.remove('shooter');
