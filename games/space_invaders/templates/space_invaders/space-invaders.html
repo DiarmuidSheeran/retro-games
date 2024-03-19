@@ -58,16 +58,9 @@
                             <li><h5><strong>{{ game_score.user_name }} - {{ game_score.score }}</strong></h5><p><small class="small-text">{{ game_score.created_at }}</small></p></li>
                         {% endfor %}
                     </ul>
-                    <div class="dropdown">
-                        <button class="btn btn-lg btn-info dropdown-toggle mb-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <strong>View All</strong>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {% for game_score in all_game_scores %}
-                                <a class="dropdown-item" href="#">{{ game_score.user_name }} - {{ game_score.score }}</a>
-                            {% endfor %}
-                        </div>
-                    </div>
+                    <a href="{% url 'space_invaders_leaderboard' %}" class="btn btn-lg btn-info mb-4 border border-light">
+                        <strong>View All</strong>
+                    </a>
                 </div>
             </div>
             <div class="row mt-4">

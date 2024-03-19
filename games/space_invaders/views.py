@@ -28,3 +28,15 @@ def space_invaders(request):
 
     return render(request, template, context)
 
+def space_invaders_leaderboard(request):
+
+    all_game_scores = GameScore.objects.all()
+
+    context = {
+        'all_game_scores': all_game_scores,
+    }
+
+    template = 'space_invaders/space-invaders-leaderboard.html'
+
+    return render(request, template, context)
+

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block space_invaders_css %}
+    <link rel="stylesheet" href="{% static 'css/space_invaders.css' %}">
+{% endblock %}
+
+{% block space_invaders_js %}
+<script src="{% static 'js/space_invaders.js' %}"></script>
+{% endblock %}
+
+{% block title %}Space Invaders{% endblock %}
+
+{% block content %}
+<div class="container mb-4 text-center justify-content-center" style="margin-bottom: 100px;">      
+    <div class="row">
+        <div class="card text-white text-center leaderboard h-100" style="margin: 0; margin-bottom: 100px;">
+            <img src="{% static 'images/space-invaders/space-invaders-logo.png' %}" alt="Space Invaders Logo" class="img-fluid leaderboard">
+            <a href="{% url 'space_invaders' %}" class="btn btn-lg btn-light border border-danger mt-4 text-dark"><strong>Return to Game</strong></a>
+            <h2 class="leaderboard text-white text-decoration-underline"><strong>Leaderboards</strong></h2>
+            <ul class="leaderboard">
+                {% for game_score in all_game_scores %}
+                    <li><h5><strong>{{ forloop.counter }}, {{ game_score.user_name }} - {{ game_score.score }}</strong></h5><p><small class="small-text">{{ game_score.created_at }}</small></p></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
