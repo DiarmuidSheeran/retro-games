@@ -1,1 +1,1 @@
-web: gunicorn games.wsgi:application
+web: gunicorn retro-games.wsgi:application
